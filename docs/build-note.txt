@@ -1,0 +1,2 @@
+(진행상태·개인정보처리방침 전문은 claude.ai 프로젝트 "홈페이지 제작" 문서
+ greenpro-build-status.md / greenpro-privacy-policy.md 에도 있습니다.)
