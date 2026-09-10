@@ -1,5 +1,20 @@
 /* GreenPro 홈페이지 — 공통 스크립트 */
 
+// 히어로 화면 맨 위에서 스크롤을 조금만 내려도 다음 섹션(Solution)까지 한 번에 이동
+(function(){
+  var hero = document.querySelector('.hero.sec');
+  var next = hero && hero.nextElementSibling;
+  if(!hero || !next) return;
+  var jumping = false;
+  window.addEventListener('wheel', function(e){
+    if(jumping || window.scrollY > 40 || e.deltaY <= 0) return;
+    jumping = true;
+    e.preventDefault();
+    next.scrollIntoView({behavior:'smooth', block:'start'});
+    setTimeout(function(){ jumping = false; }, 700);
+  }, {passive:false});
+})();
+
 // 모바일 메뉴 토글
 (function(){
   var burger = document.getElementById('burger');
