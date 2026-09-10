@@ -1,19 +1,5 @@
 /* GreenPro 홈페이지 — 공통 스크립트 */
 
-// 상단바+헤더 실제 높이 측정 (히어로 섹션을 첫 화면에 꽉 맞추기 위한 기준값)
-(function(){
-  function setHeaderH(){
-    var tb = document.querySelector('.topbar');
-    var hd = document.querySelector('header');
-    var h = (tb ? tb.offsetHeight : 0) + (hd ? hd.offsetHeight : 0);
-    document.documentElement.style.setProperty('--header-h', h + 'px');
-  }
-  setHeaderH();
-  window.addEventListener('resize', setHeaderH);
-  window.addEventListener('load', setHeaderH);
-  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(setHeaderH); }
-})();
-
 // 모바일 메뉴 토글
 (function(){
   var burger = document.getElementById('burger');

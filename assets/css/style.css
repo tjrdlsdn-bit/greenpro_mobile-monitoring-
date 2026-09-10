@@ -43,7 +43,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);backdro
 .mmenu.open{display:flex;}
 .mmenu a{padding:12px 4px;font-size:16px;border-bottom:1px solid #F3F4F6;}
 
-.hero.sec{padding-top:0;padding-bottom:0;min-height:calc(100svh - var(--header-h,112px));}
+.hero.sec{padding-top:0;padding-bottom:clamp(32px,6vh,72px);}
 .hero-grid{padding:clamp(24px,6vh,72px) 0 clamp(28px,4vw,44px);max-width:860px;}
 .hero h1{font-size:clamp(32px,5vw,56px);line-height:1.35;font-weight:800;letter-spacing:-1.5px;text-wrap:balance;}
 .hero h1 .b{color:var(--blue);}
