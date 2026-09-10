@@ -81,7 +81,7 @@ header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.92);backdro
 .bignum{font-size:clamp(44px,6.5vw,64px);font-weight:var(--num);color:var(--blue);line-height:1;letter-spacing:-1.5px;}
 .rec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;}
 .tbl-wrap{margin-top:40px;overflow-x:auto;border:1px solid var(--line);border-radius:16px;background:#fff;}
-table.rec{width:100%;border-collapse:collapse;min-width:560px;}
+table.rec{width:100%;border-collapse:collapse;min-width:420px;}
 table.rec th{background:var(--ink);color:#fff;font-weight:600;font-size:14px;text-align:left;padding:16px 20px;}
 table.rec td{padding:16px 20px;font-size:15px;border-top:1px solid var(--line);}
 table.rec tr td:first-child{font-weight:700;}
