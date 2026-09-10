@@ -1,5 +1,19 @@
 /* GreenPro 홈페이지 — 공통 스크립트 */
 
+// 상단바+헤더 실제 높이 측정 (히어로 섹션을 첫 화면에 꽉 맞추기 위한 기준값)
+(function(){
+  function setHeaderH(){
+    var tb = document.querySelector('.topbar');
+    var hd = document.querySelector('header');
+    var h = (tb ? tb.offsetHeight : 0) + (hd ? hd.offsetHeight : 0);
+    document.documentElement.style.setProperty('--header-h', h + 'px');
+  }
+  setHeaderH();
+  window.addEventListener('resize', setHeaderH);
+  window.addEventListener('load', setHeaderH);
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(setHeaderH); }
+})();
+
 // 모바일 메뉴 토글
 (function(){
   var burger = document.getElementById('burger');
@@ -14,13 +28,17 @@
   var nums = document.querySelectorAll('.num[data-to]');
   if(!nums.length) return;
   var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fmt(v, decimals){
+    return decimals ? v.toFixed(decimals) : Math.floor(v).toLocaleString('en-US');
+  }
   function countUp(el){
     var to = +el.dataset.to, st = null;
+    var decimals = (el.dataset.to.split('.')[1] || '').length;
     function step(t){
       if(!st) st = t;
       var p = Math.min((t-st)/1100, 1);
-      el.textContent = Math.floor(p*to).toLocaleString('en-US');
-      if(p<1) requestAnimationFrame(step); else el.textContent = to.toLocaleString('en-US');
+      el.textContent = fmt(p*to, decimals);
+      if(p<1) requestAnimationFrame(step); else el.textContent = fmt(to, decimals);
     }
     requestAnimationFrame(step);
   }
@@ -28,7 +46,8 @@
     es.forEach(function(e){
       if(e.isIntersecting && !e.target.dataset.done){
         e.target.dataset.done = 1;
-        reduce ? (e.target.textContent = (+e.target.dataset.to).toLocaleString('en-US')) : countUp(e.target);
+        var decimals = (e.target.dataset.to.split('.')[1] || '').length;
+        reduce ? (e.target.textContent = fmt(+e.target.dataset.to, decimals)) : countUp(e.target);
         io.unobserve(e.target);
       }
     });
