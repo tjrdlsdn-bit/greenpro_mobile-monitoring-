@@ -1,3 +1,14 @@
-시공 사진을 이 폴더에 넣으세요 (예: daelim-paju.jpg).
-그다음 record.html / index.html 의 <div class="ph">[ 시공 사진 ]</div> 를
-<div class="ph"><img src="assets/img/daelim-paju.jpg" alt="대림제지 파주공장 태양광"></div> 처럼 바꾸면 됩니다.
+[ 시공 사진 파일 안내 ]
+
+아래 3개 파일명 그대로 이 폴더에 넣으면 홈페이지와 실적·사례 페이지에 자동으로 표시됩니다.
+(index.html / record.html 에 이미 연결되어 있음)
+
+  case-ds1.jpg             → DS단석 1공장 (전북 군산 · 바이오에너지 · 1,800kW)
+  case-chamfre-gunsan.jpg  → 참프레 군산공장 (전북 군산 · 육가공 · 1,650kW)
+  case-jw.jpg              → JW생명과학 물류동 (충남 당진 · 제약 · 800kW)
+
+주의
+- 파일명은 위와 정확히 같아야 합니다 (대소문자 포함).
+- 확장자가 .png 인 경우 파일명을 .jpg 로 바꾸지 말고, HTML의 src 를 .png 로 수정해야 합니다.
+- 카드 이미지는 가로로 잘려서 표시됩니다(object-fit: cover). 가로로 넓은 사진이 잘 어울립니다.
+- 용량은 장당 300KB~1MB 정도로 줄이면 로딩이 빨라집니다.
