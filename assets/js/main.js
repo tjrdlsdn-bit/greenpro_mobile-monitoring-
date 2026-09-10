@@ -1,17 +1,59 @@
 /* GreenPro 홈페이지 — 공통 스크립트 */
 
-// 히어로 화면 맨 위에서 스크롤을 조금만 내려도 다음 섹션(Solution)까지 한 번에 이동
+// 새로고침·뒤로가기 시 항상 첫 화면부터 보이도록 (브라우저의 스크롤 위치 복원 끄기)
+if('scrollRestoration' in history){ history.scrollRestoration = 'manual'; }
+
+// 홈 화면: 마우스 휠 한 번에 다음 섹션(한 화면)씩 이동
 (function(){
-  var hero = document.querySelector('.hero.sec');
-  var next = hero && hero.nextElementSibling;
-  if(!hero || !next) return;
+  if(!document.querySelector('.hero.sec')) return; // 홈에서만 동작
+  var main = document.querySelector('main');
+  if(!main) return;
+  var blocks = Array.prototype.slice.call(main.children);
+  var footer = document.querySelector('footer');
+  if(footer) blocks.push(footer);
+  if(blocks.length < 2) return;
+
   var jumping = false;
+
+  function headerH(){
+    var hd = document.querySelector('header');
+    return hd ? hd.getBoundingClientRect().height : 0;
+  }
+  function stops(){
+    var offset = headerH();
+    return blocks.map(function(el){
+      return Math.max(0, Math.round(window.scrollY + el.getBoundingClientRect().top - offset));
+    });
+  }
+
   window.addEventListener('wheel', function(e){
-    if(jumping || window.scrollY > 40 || e.deltaY <= 0) return;
-    jumping = true;
+    if(jumping || e.ctrlKey || !e.deltaY) return; // ctrl+휠(확대/축소)은 그대로 둠
+    var down = e.deltaY > 0;
+    var y = window.scrollY;
+    if(!down && y <= 2) return;
+    var list = stops();
+    var step = Math.max(200, window.innerHeight - headerH());
+    var minGap = Math.max(60, Math.round(window.innerHeight * 0.15)); // 너무 짧은 이동은 건너뜀
+    var target = null;
+    if(down){
+      for(var i=0;i<list.length;i++){ if(list[i] > y + minGap){ target = list[i]; break; } }
+      if(target === null) return; // 마지막 섹션 아래는 기본 스크롤에 맡김
+      // 섹션이 한 화면보다 훨씬 길면 한 화면씩만 이동해 내용을 건너뛰지 않게 함
+      if(target - y > step * 1.35) target = y + step;
+    } else {
+      for(var j=list.length-1;j>=0;j--){ if(list[j] < y - minGap){ target = list[j]; break; } }
+      if(target === null) target = 0;
+      if(y - target > step * 1.35) target = y - step;
+      if(target < 0) target = 0;
+    }
+    var maxY = document.documentElement.scrollHeight - window.innerHeight;
+    if(target > maxY) target = maxY;
+    if(Math.abs(target - y) < 2) return; // 더 이동할 곳이 없으면 기본 동작에 맡김
     e.preventDefault();
-    next.scrollIntoView({behavior:'smooth', block:'start'});
-    setTimeout(function(){ jumping = false; }, 700);
+    jumping = true;
+    var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    window.scrollTo({top:target, behavior: reduce ? 'auto' : 'smooth'});
+    setTimeout(function(){ jumping = false; }, 650);
   }, {passive:false});
 })();
 
