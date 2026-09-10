@@ -1,0 +1,13 @@
+# 사이트에서 사용하지 않는 이미지 원본(변환 전 파일)
+*.jpg.png
+*.png.jpg
+
+# OS·에디터 생성 파일
+Thumbs.db
+desktop.ini
+.DS_Store
+.vscode/
+.idea/
+
+# 패키지 매니저
+node_modules/

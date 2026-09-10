@@ -1,14 +1,19 @@
-[ 시공 사진 파일 안내 ]
+[ 이미지 폴더 안내 ]
 
-아래 3개 파일명 그대로 이 폴더에 넣으면 홈페이지와 실적·사례 페이지에 자동으로 표시됩니다.
-(index.html / record.html 에 이미 연결되어 있음)
+현재 들어있는 파일
+  favicon.svg               브라우저 탭 아이콘 (블루 배경 + 흰색 G)
+  case-ds1.jpg              DS단석 1공장 (전북 군산 · 바이오에너지 · 1,800kW)
+  case-chamfre-gunsan.jpg   참프레 군산공장 (전북 군산 · 육가공 · 1,650kW)
+  case-jw.jpg               JW생명과학 물류동 (충남 당진 · 제약 · 800kW)
 
-  case-ds1.jpg             → DS단석 1공장 (전북 군산 · 바이오에너지 · 1,800kW)
-  case-chamfre-gunsan.jpg  → 참프레 군산공장 (전북 군산 · 육가공 · 1,650kW)
-  case-jw.jpg              → JW생명과학 물류동 (충남 당진 · 제약 · 800kW)
+시공 사진을 추가하거나 교체할 때
+1) 반드시 JPG로 넣으세요. PNG는 같은 사진도 용량이 3~7배 큽니다.
+   변환 예시:  ffmpeg -i 원본.png -q:v 3 case-이름.jpg
+2) 이 폴더에 저장한 뒤, index.html 과 record.html 의 카드 부분을 함께 수정합니다.
+   <div class="ph"><img src="assets/img/case-이름.jpg" alt="설명"></div>
+3) 카드 이미지는 가로로 잘려서 표시됩니다(object-fit: cover).
+   가로로 넓은 사진이 잘 어울리고, 가로 600px 이상이면 충분합니다.
 
 주의
-- 파일명은 위와 정확히 같아야 합니다 (대소문자 포함).
-- 확장자가 .png 인 경우 파일명을 .jpg 로 바꾸지 말고, HTML의 src 를 .png 로 수정해야 합니다.
-- 카드 이미지는 가로로 잘려서 표시됩니다(object-fit: cover). 가로로 넓은 사진이 잘 어울립니다.
-- 용량은 장당 300KB~1MB 정도로 줄이면 로딩이 빨라집니다.
+- index.html 과 record.html 에 같은 카드가 중복되어 있습니다. 두 파일 모두 고쳐야 합니다.
+- 변환 전 원본(*.jpg.png 등)은 .gitignore 로 제외되어 저장소에 올라가지 않습니다.
