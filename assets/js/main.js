@@ -32,6 +32,10 @@ if('scrollRestoration' in history){ history.scrollRestoration = 'manual'; }
     var y = window.scrollY;
     if(!down && y <= 2) return;
     var list = stops();
+    // data-freescroll 섹션(실적 등) 안에서는 자동 이동 없이 평소처럼 스크롤
+    var cur = 0;
+    for(var k=0;k<list.length;k++){ if(list[k] <= y + 2) cur = k; }
+    if(blocks[cur].hasAttribute('data-freescroll')) return;
     var step = Math.max(200, window.innerHeight - headerH());
     var minGap = Math.max(60, Math.round(window.innerHeight * 0.15)); // 너무 짧은 이동은 건너뜀
     var target = null;
