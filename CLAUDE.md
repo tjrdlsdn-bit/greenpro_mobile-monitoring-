@@ -21,7 +21,9 @@
 | GitHub | https://github.com/tjrdlsdn-bit/greenpro_mobile-monitoring- |
 | 배포 주소(고정) | https://greenpro-mobile-monitoring.vercel.app/ |
 | 배포 방식 | GitHub `main` 브랜치에 push → Vercel 자동 재배포 (1~2분) |
-| 최종 도메인 | greenpro.co.kr (아직 연결 전 — 후이즈에서 DNS 작업 필요) |
+| 대표 주소 | **https://www.greenpro.co.kr** (2026-09-14 연결). greenpro.co.kr로 들어오면 www로 308 이동 |
+| DNS 관리 | **Vercel DNS** (네임서버 ns1/ns2.vercel-dns.com — 후이즈에서 변경). MX·TXT 등은 Vercel 대시보드 → Domains → greenpro.co.kr에서 관리 |
+| 도메인 등록 | 후이즈 (만료 2029-01-22). 옛 호스팅 지오디웹스는 만료됨 |
 | 커밋 작성자 | 석인우 / tjrdlsdn@gmail.com |
 
 **작업 후에는 반드시 commit + push** 해야 배포 주소에 반영됩니다.
@@ -128,9 +130,12 @@ ffmpeg -i 원본.png -q:v 3 assets/img/case-이름.jpg
 ## 7. 아직 안 된 것 (우선순위 순)
 
 1. **Formspree 확인 이메일 클릭** — 첫 제출 건에 대해 Formspree가 확인 메일을 보냄. 그 링크를 눌러야 실제 문의가 이메일로 전달되기 시작함 (미확인 상태면 문의가 유실됨)
-2. **도메인 연결** — Vercel Settings → Domains에 greenpro.co.kr 추가 → 후이즈(whois.co.kr)에서 A/CNAME 등록
-   ⚠️ **"그린프로" 구글 검색 1위 자산 보존이 중요** — 도메인 유지, URL 구조·메타 크게 바꾸지 말 것
-3. **회사 이메일 개설** — 구글 워크스페이스로 info@greenpro.co.kr. **DNS 연결하는 시점에 MX/TXT를 같이 등록** (따로 하지 말 것)
+2. ~~도메인 연결~~ **완료 (2026-09-14)** — 네임서버를 지오디웹스(호스팅 만료)에서 Vercel DNS로 변경, 대표 주소 www. sitemap·robots도 www 기준으로 수정함
+   ⚠️ **"그린프로" 구글 검색 1위 자산 보존이 중요** — 구글 서치 콘솔에 www 주소 등록·sitemap 제출·색인 확인 필요
+3. **회사 이메일 (진행 중)** — 구글 워크스페이스 Business Starter. 관리자 계정 inwoo@greenpro.co.kr + info@ 별칭(무료)
+   - 인증 TXT·MX·SPF는 **후이즈가 아니라 Vercel DNS**에 입력
+   - 옛 MX(fmcity.com)는 greenpro.co.kr 수신을 거절하던 빈 설정이었음 → 백업할 메일 없음
+   - 완료 후 Formspree 수신 주소를 info@로 변경
 4. **사업영역 "대상별 안내" 섹션 재작성** — 기존 섹션은 삭제된 상태. 정리 후 다시 만들 예정
 5. 문의 폼 이메일 필드가 선택사항 — 드론 3D 분석 자료 전달을 생각하면 필수로 변경 검토
 6. (선택) 시공 사진 추가 확보 — 현재 3장. 대림제지·에어퍼스트 사진이 있으면 카드 확장 가능
