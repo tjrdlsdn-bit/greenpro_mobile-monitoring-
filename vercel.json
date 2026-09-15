@@ -1,4 +1,14 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/bbs/content.php",
+      "has": [{ "type": "query", "key": "co_id", "value": "privacy" }],
+      "destination": "/privacy",
+      "permanent": true
+    },
+    { "source": "/bbs/:path*", "destination": "/", "permanent": true },
+    { "source": "/index.php", "destination": "/", "permanent": true }
+  ]
 }
