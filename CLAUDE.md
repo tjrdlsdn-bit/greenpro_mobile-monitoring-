@@ -134,10 +134,13 @@ ffmpeg -i 원본.png -q:v 3 assets/img/case-이름.jpg
    ⚠️ **"그린프로" 구글 검색 1위 자산 보존이 중요** — 구글 서치 콘솔에 www 주소 등록·sitemap 제출·색인 확인 필요
 3. ~~회사 이메일~~ **수신 완료 (2026-09-15)** — 구글 워크스페이스 Business Starter(무료 체험 후 월간 결제)
    - 계정: 관리자 겸 사용자 `inwoo@greenpro.co.kr` 1명 + 별칭 `info@greenpro.co.kr`(무료). 별칭 추가는 관리 콘솔 → 디렉터리 → 사용자 → 석인우 → 사용자 정보 → 보조 이메일
-   - DNS는 **Vercel DNS**에 입력 (후이즈 아님): `@ TXT google-site-verification=…` / `@ MX 1 smtp.google.com` / `@ TXT v=spf1 include:_spf.google.com ~all` / `google._domainkey TXT v=DKIM1;k=rsa;p=…(2048비트)`
+   - DNS는 **Vercel DNS**에 입력 (후이즈 아님): `@ TXT google-site-verification=…` / `@ MX 1 smtp.google.com` / `@ TXT v=spf1 include:_spf.google.com ~all` / `google._domainkey TXT v=DKIM1;k=rsa;p=…(2048비트)` / `_dmarc TXT v=DMARC1; p=none`
+   - 발신 인증 확인(2026-09-15, Gmail 원본 보기): SPF PASS · DKIM PASS. 관리 콘솔 DKIM 상태 "인증 중" — **새 레코드 생성·인증 중지는 누르지 말 것** (키가 바뀌면 DNS 값도 다시 넣어야 함)
    - 외부 Gmail → inwoo@·info@ 수신 테스트 통과
    - 옛 MX(fmcity.com)는 greenpro.co.kr 수신을 거절하던 빈 설정이었음 → 옮길 메일 없었음
-   - **남은 일**: 관리 콘솔 → 앱 → Google Workspace → Gmail → 이메일 인증에서 DKIM **인증 시작** 확인 / Gmail에서 info@ 보내기 주소 추가 / **Formspree 수신 주소를 info@로 변경** / 무료 체험 종료 전 결제 수단 유지 확인
+   - Gmail 보내기 주소: inwoo@(기본) + info@ 추가, 답장은 "받은 주소에서 답장". 보낸사람 이름은 info@=그린프로, inwoo@=석인우 권장
+   - 새 도메인이라 초기 발송 메일이 스팸함에 갈 수 있음 → 빈 본문 테스트 금지, 받는 쪽에서 "스팸 아님" 표시
+   - **남은 일**: **Formspree 수신 주소를 info@로 변경** / 몇 주 문제없으면 DMARC를 `p=quarantine`으로 강화 검토 / 무료 체험 종료 전 결제 수단 유지 확인
 4. **사업영역 "대상별 안내" 섹션 재작성** — 기존 섹션은 삭제된 상태. 정리 후 다시 만들 예정
 5. 문의 폼 이메일 필드가 선택사항 — 드론 3D 분석 자료 전달을 생각하면 필수로 변경 검토
 6. (선택) 시공 사진 추가 확보 — 현재 3장. 대림제지·에어퍼스트 사진이 있으면 카드 확장 가능
