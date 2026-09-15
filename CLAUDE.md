@@ -146,7 +146,8 @@ ffmpeg -i 원본.png -q:v 3 assets/img/case-이름.jpg
    - ~~서치어드바이저 사이트 등록·소유확인~~ **완료 (2026-09-15)** — 사용자 네이버 계정, `https://www.greenpro.co.kr`, HTML 태그 방식
    - ⚠️ `index.html` `<head>`의 `<meta name="naver-site-verification" ...>` **삭제 금지** (지우면 소유확인 풀림)
    - ~~sitemap 제출·웹 페이지 수집 요청~~ **완료 (2026-09-15)** — 요청 → 사이트맵 제출 `sitemap.xml` / 요청 → 웹 페이지 수집 `/`, `/record`, `/business`, `/about`. 반영까지 며칠~2주 → 다음 주쯤 네이버 "그린프로" 재검색
-   - 남은 일: 옛 주소(`/bbs/...` 등) → 새 홈페이지 리다이렉트(vercel.json) / 네이버 스마트플레이스 업체 등록(사용자)
+   - ~~옛 주소 연결~~ **완료 (2026-09-15)** — `vercel.json`의 `redirects`(308 영구 이동): `/bbs/content.php?co_id=privacy` → `/privacy`, 그 밖의 `/bbs/...` → `/`, `/index.php` → `/`. 옛 주소가 더 발견되면 같은 방식으로 규칙 추가 (구체적인 규칙을 `/bbs/:path*`보다 위에)
+   - 남은 일: 네이버 스마트플레이스 업체 등록(사용자)
 
 ---
 
