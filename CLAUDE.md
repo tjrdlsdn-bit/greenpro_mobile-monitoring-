@@ -58,7 +58,7 @@
 - 페이지 6개: `index.html`(홈) · `about.html`(회사소개) · `business.html`(사업영역) · `record.html`(실적·사례) · `contact.html`(문의) · `privacy.html`(개인정보처리방침)
 - 공통 파일: `assets/css/style.css`, `assets/js/main.js`
 - **헤더·푸터·상단배너는 각 페이지에 인라인으로 중복**되어 있음 → 수정 시 **6개 파일 전부 동일하게 반영**할 것
-- 이미지: `assets/img/` (favicon.svg 있음)
+- 이미지: `assets/img/` / 아이콘: 루트 `favicon.ico`(16·32·48) + `assets/img/favicon-192.png` + `apple-touch-icon.png` / 검색·공유용: `assets/img/logo.png`(600 정사각 GREENPRO) · `og-image.png`(1200×630)
 - SEO: `sitemap.xml`, `robots.txt` (루트에 위치, greenpro.co.kr 기준으로 작성됨)
 
 ### main.js 구성 (4개 블록)
@@ -85,7 +85,8 @@
 - [x] **도메인 연결 (2026-09-14)** — 네임서버를 지오디웹스(만료)에서 Vercel DNS로 변경, 대표 주소 www. sitemap·robots도 www 기준
 - [x] **회사 메일 개설 (2026-09-15)** — 홈페이지와 별도 프로젝트로 분리 (위 표의 EMAIL.md 참고)
 - [x] **스팸 방지** — 허니팟 필드(`_gotcha`) 적용. 봇이 채우면 전송하지 않고 성공한 것처럼만 표시
-- [x] **Favicon** — `assets/img/favicon.svg` (블루 배경 + 흰색 G), 6개 페이지 전부 적용
+- [x] **Favicon (2026-09-15 교체)** — **흰 바탕 + 파란 G** (Pretendard ExtraBold, #0049F0). SVG는 글꼴이 기기마다 달라져 PNG/ICO로 교체. 6개 페이지 head에 ico·192px·apple-touch 링크
+- [x] **검색·공유 로고** — 사이트 헤더와 같은 GREENPRO 워드마크(Pretendard Black). 6개 페이지 `og:image`·`og:url`, `index.html`에 Organization(logo)·WebSite(name/alternateName) 구조화 데이터. 이미지 재생성 시 Pillow로 같은 글꼴·색 사용
 - [x] **개인정보처리방침 최종화** — 보호책임자·시행일 확정
 - [x] **SEO 기본** — sitemap.xml, robots.txt, 페이지별 title/description/OG
 - [x] **GitHub + Vercel 배포**
