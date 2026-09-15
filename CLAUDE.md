@@ -81,7 +81,7 @@
 
 ## 6. 완료된 작업
 
-- [x] **문의 폼 실제 전송** — Formspree 연결 (`main.js`의 `FORM_ENDPOINT`). 수신 주소 **info@greenpro.co.kr** (2026-09-15 변경·테스트 통과). Formspree 로그인 계정은 tjrdlsdn@gmail.com
+- [x] **문의 폼 실제 전송** — Formspree 연결 (`main.js`의 `FORM_ENDPOINT`). 받는 주소 **inwoo@greenpro.co.kr** (info@의 본계정 — 같은 받은편지함, 2026-09-15 변경·실사이트 테스트 통과). 받는 주소는 Formspree → 폼 → **Workflow → Actions → Email** 에서 바꿈 (Settings 탭에는 없음). Formspree 로그인 계정은 tjrdlsdn@gmail.com. 알림 메일(noreply@formspree.io)이 Gmail 스팸함으로 갈 수 있어 필터 권장
 - [x] **도메인 연결 (2026-09-14)** — 네임서버를 지오디웹스(만료)에서 Vercel DNS로 변경, 대표 주소 www. sitemap·robots도 www 기준
 - [x] **회사 메일 개설 (2026-09-15)** — 홈페이지와 별도 프로젝트로 분리 (위 표의 EMAIL.md 참고)
 - [x] **스팸 방지** — 허니팟 필드(`_gotcha`) 적용. 봇이 채우면 전송하지 않고 성공한 것처럼만 표시
