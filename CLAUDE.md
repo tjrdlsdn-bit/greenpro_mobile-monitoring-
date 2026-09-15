@@ -150,6 +150,7 @@ ffmpeg -i 원본.png -q:v 3 assets/img/case-이름.jpg
 ### ⚠️ Vercel DNS에는 회사 메일 레코드도 있다
 홈페이지와 회사 메일이 **같은 Vercel DNS**를 씁니다. 도메인·DNS 작업 중에 아래 레코드를 **지우거나 고치지 마세요** — 메일이 끊깁니다.
 - `@` MX `smtp.google.com` / `@` TXT `google-site-verification=…` / `@` TXT `v=spf1 …` / `google._domainkey` TXT / `_dmarc` TXT
+- 특히 `google-site-verification` TXT는 **구글 서치 콘솔 소유 확인에도 쓰임** (inwoo@ 계정, 도메인 속성 greenpro.co.kr, 2026-09-15 자동 확인) — 지우면 서치 콘솔 권한도 끊김
 - 후이즈에서 네임서버를 바꾸면 홈페이지와 메일이 동시에 멈춥니다
 - 메일 관련 작업은 `Desktop/[회사 메일]/EMAIL.md` 기준으로 따로 진행
 
