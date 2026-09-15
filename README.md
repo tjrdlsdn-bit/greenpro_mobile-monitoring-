@@ -4,10 +4,11 @@
 
 | 항목 | 값 |
 |---|---|
-| 배포 주소 | https://greenpro-mobile-monitoring.vercel.app/ |
+| 대표 주소 | https://www.greenpro.co.kr (2026-09-14 연결) |
+| Vercel 주소 | https://greenpro-mobile-monitoring.vercel.app/ |
 | 저장소 | https://github.com/tjrdlsdn-bit/greenpro_mobile-monitoring- |
 | 배포 방식 | `main` 브랜치 push → Vercel 자동 재배포 (1~2분) |
-| 최종 도메인 | greenpro.co.kr (연결 예정) |
+| DNS | Vercel DNS — **회사 메일 레코드도 함께 있으니 삭제 금지** (메일 문서는 저장소 밖에서 따로 관리) |
 
 ---
 
@@ -65,8 +66,6 @@ push하면 Vercel이 자동으로 재배포합니다. 별도 배포 명령은 �
 
 `CLAUDE.md`의 "7. 아직 안 된 것" 참고. 요약하면:
 
-1. Formspree 확인 이메일 클릭 (안 하면 문의가 이메일로 전달되지 않음)
-2. greenpro.co.kr 도메인 연결 — Vercel Domains 추가 → 후이즈에서 A/CNAME 등록
+1. 구글 서치 콘솔에 www 주소 등록·sitemap 제출
    ⚠️ "그린프로" 구글 검색 1위 유지가 중요하니 URL 구조·메타는 크게 바꾸지 말 것
-3. 구글 워크스페이스로 info@greenpro.co.kr 개설 (DNS 연결 시점에 MX/TXT 함께 등록)
-4. 사업영역 "대상별 안내" 섹션 재작성
+2. 사업영역 "대상별 안내" 섹션 재작성

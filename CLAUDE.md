@@ -3,7 +3,7 @@
 이 파일은 Claude Code가 이 프로젝트를 이어받을 때 **가장 먼저 읽는 규칙서**입니다.
 사이트는 이미 완성되어 **Vercel에 배포 중**입니다. 처음부터 다시 만들지 말고, 기존 코드를 이어서 다듬으세요.
 
-> 최종 업데이트: 2026-09-11
+> 최종 업데이트: 2026-09-15
 
 ---
 
@@ -22,8 +22,9 @@
 | 배포 주소(고정) | https://greenpro-mobile-monitoring.vercel.app/ |
 | 배포 방식 | GitHub `main` 브랜치에 push → Vercel 자동 재배포 (1~2분) |
 | 대표 주소 | **https://www.greenpro.co.kr** (2026-09-14 연결). greenpro.co.kr로 들어오면 www로 308 이동 |
-| DNS 관리 | **Vercel DNS** (네임서버 ns1/ns2.vercel-dns.com — 후이즈에서 변경). MX·TXT 등은 Vercel 대시보드 → Domains → greenpro.co.kr에서 관리 |
+| DNS 관리 | **Vercel DNS** (네임서버 ns1/ns2.vercel-dns.com — 후이즈에서 변경). Vercel 대시보드 → Domains → greenpro.co.kr |
 | 도메인 등록 | 후이즈 (만료 2029-01-22). 옛 호스팅 지오디웹스는 만료됨 |
+| 회사 메일 | 구글 워크스페이스 (info@greenpro.co.kr). **별도 프로젝트로 분리** — 상세는 `Desktop/[회사 메일]/EMAIL.md` (GitHub에 없음) |
 | 커밋 작성자 | 석인우 / tjrdlsdn@gmail.com |
 
 **작업 후에는 반드시 commit + push** 해야 배포 주소에 반영됩니다.
@@ -80,7 +81,9 @@
 
 ## 6. 완료된 작업
 
-- [x] **문의 폼 실제 전송** — Formspree 연결 (`main.js`의 `FORM_ENDPOINT`)
+- [x] **문의 폼 실제 전송** — Formspree 연결 (`main.js`의 `FORM_ENDPOINT`). 수신 주소 **info@greenpro.co.kr** (2026-09-15 변경·테스트 통과). Formspree 로그인 계정은 tjrdlsdn@gmail.com
+- [x] **도메인 연결 (2026-09-14)** — 네임서버를 지오디웹스(만료)에서 Vercel DNS로 변경, 대표 주소 www. sitemap·robots도 www 기준
+- [x] **회사 메일 개설 (2026-09-15)** — 홈페이지와 별도 프로젝트로 분리 (위 표의 EMAIL.md 참고)
 - [x] **스팸 방지** — 허니팟 필드(`_gotcha`) 적용. 봇이 채우면 전송하지 않고 성공한 것처럼만 표시
 - [x] **Favicon** — `assets/img/favicon.svg` (블루 배경 + 흰색 G), 6개 페이지 전부 적용
 - [x] **개인정보처리방침 최종화** — 보호책임자·시행일 확정
@@ -129,26 +132,22 @@ ffmpeg -i 원본.png -q:v 3 assets/img/case-이름.jpg
 
 ## 7. 아직 안 된 것 (우선순위 순)
 
-1. **Formspree 확인 이메일 클릭** — 첫 제출 건에 대해 Formspree가 확인 메일을 보냄. 그 링크를 눌러야 실제 문의가 이메일로 전달되기 시작함 (미확인 상태면 문의가 유실됨)
-2. ~~도메인 연결~~ **완료 (2026-09-14)** — 네임서버를 지오디웹스(호스팅 만료)에서 Vercel DNS로 변경, 대표 주소 www. sitemap·robots도 www 기준으로 수정함
-   ⚠️ **"그린프로" 구글 검색 1위 자산 보존이 중요** — 구글 서치 콘솔에 www 주소 등록·sitemap 제출·색인 확인 필요
-3. ~~회사 이메일~~ **수신 완료 (2026-09-15)** — 구글 워크스페이스 Business Starter(무료 체험 후 월간 결제)
-   - 계정: 관리자 겸 사용자 `inwoo@greenpro.co.kr` 1명 + 별칭 `info@greenpro.co.kr`(무료). 별칭 추가는 관리 콘솔 → 디렉터리 → 사용자 → 석인우 → 사용자 정보 → 보조 이메일
-   - DNS는 **Vercel DNS**에 입력 (후이즈 아님): `@ TXT google-site-verification=…` / `@ MX 1 smtp.google.com` / `@ TXT v=spf1 include:_spf.google.com ~all` / `google._domainkey TXT v=DKIM1;k=rsa;p=…(2048비트)` / `_dmarc TXT v=DMARC1; p=none`
-   - 발신 인증 확인(2026-09-15, Gmail 원본 보기): SPF PASS · DKIM PASS. 관리 콘솔 DKIM 상태 "인증 중" — **새 레코드 생성·인증 중지는 누르지 말 것** (키가 바뀌면 DNS 값도 다시 넣어야 함)
-   - 외부 Gmail → inwoo@·info@ 수신 테스트 통과
-   - 옛 MX(fmcity.com)는 greenpro.co.kr 수신을 거절하던 빈 설정이었음 → 옮길 메일 없었음
-   - Gmail 보내기 주소: inwoo@(기본) + info@ 추가, 답장은 "받은 주소에서 답장". 보낸사람 이름은 info@=그린프로, inwoo@=석인우 권장
-   - 새 도메인이라 초기 발송 메일이 스팸함에 갈 수 있음 → 빈 본문 테스트 금지, 받는 쪽에서 "스팸 아님" 표시
-   - **남은 일**: **Formspree 수신 주소를 info@로 변경** / 몇 주 문제없으면 DMARC를 `p=quarantine`으로 강화 검토 / 무료 체험 종료 전 결제 수단 유지 확인
-4. **사업영역 "대상별 안내" 섹션 재작성** — 기존 섹션은 삭제된 상태. 정리 후 다시 만들 예정
-5. 문의 폼 이메일 필드가 선택사항 — 드론 3D 분석 자료 전달을 생각하면 필수로 변경 검토
-6. (선택) 시공 사진 추가 확보 — 현재 3장. 대림제지·에어퍼스트 사진이 있으면 카드 확장 가능
-7. (선택) Google Analytics
+1. **구글 서치 콘솔** — www 주소 등록·sitemap 제출·색인 확인
+   ⚠️ **"그린프로" 구글 검색 1위 자산 보존이 중요** — URL 구조·메타는 크게 바꾸지 말 것
+2. **사업영역 "대상별 안내" 섹션 재작성** — 기존 섹션은 삭제된 상태. 정리 후 다시 만들 예정
+3. 문의 폼 이메일 필드가 선택사항 — 드론 3D 분석 자료 전달을 생각하면 필수로 변경 검토
+4. (선택) 시공 사진 추가 확보 — 현재 3장. 대림제지·에어퍼스트 사진이 있으면 카드 확장 가능
+5. (선택) Google Analytics
 
 ---
 
 ## 8. 작업 시 주의사항 (실제로 겪은 함정)
+
+### ⚠️ Vercel DNS에는 회사 메일 레코드도 있다
+홈페이지와 회사 메일이 **같은 Vercel DNS**를 씁니다. 도메인·DNS 작업 중에 아래 레코드를 **지우거나 고치지 마세요** — 메일이 끊깁니다.
+- `@` MX `smtp.google.com` / `@` TXT `google-site-verification=…` / `@` TXT `v=spf1 …` / `google._domainkey` TXT / `_dmarc` TXT
+- 후이즈에서 네임서버를 바꾸면 홈페이지와 메일이 동시에 멈춥니다
+- 메일 관련 작업은 `Desktop/[회사 메일]/EMAIL.md` 기준으로 따로 진행
 
 ### 인라인 style이 CSS를 덮어쓴다
 HTML에 `style="..."` 로 박힌 속성은 `style.css`의 규칙보다 우선합니다.
