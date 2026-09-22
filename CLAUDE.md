@@ -3,7 +3,7 @@
 이 파일은 Claude Code가 이 프로젝트를 이어받을 때 **가장 먼저 읽는 규칙서**입니다.
 사이트는 이미 완성되어 **Vercel에 배포 중**입니다. 처음부터 다시 만들지 말고, 기존 코드를 이어서 다듬으세요.
 
-> 최종 업데이트: 2026-09-15
+> 최종 업데이트: 2026-09-22 (이후 작업은 **맥북**에서 진행)
 
 ---
 
@@ -76,6 +76,9 @@
 - 주소: 충남 천안시 서북구 2공단1로 17 천안자이타워 지식산업센터 1105호
 - 사업자등록번호: 791-81-00084
 - 개인정보 보호책임자: 석동호 이사 (시행일 2026-09-02)
+
+⚠️ 명함 제작 예정 (2026-09-22 논의). 명함에 넣을 이메일 주소는 **회사 메일 세션에서 결정 중** — `[회사 메일]/명함-이메일-검토.md`.
+**홈페이지 표기(푸터·contact·privacy의 `info@greenpro.co.kr`)를 바꾸기로 결정되면 6개 페이지를 모두 수정**할 것. 주소를 추가만 하는 경우 사이트는 손대지 않음.
 
 ---
 
@@ -195,18 +198,32 @@ python3 -m http.server 8000
 ```
 → 브라우저에서 http://localhost:8000
 
-## 10. 다른 컴퓨터에서 이어받기
+## 10. 다른 컴퓨터에서 이어받기 (2026-09-22부터 맥북 사용)
 
 ```bash
 git clone https://github.com/tjrdlsdn-bit/greenpro_mobile-monitoring-.git
 ```
+```bash
+cd greenpro_mobile-monitoring- && git config user.name "석인우" && git config user.email "tjrdlsdn@gmail.com"
+```
 - 첫 push 때 GitHub 로그인 창이 한 번 뜹니다
-- 커밋 작성자 설정이 필요할 수 있습니다:
-  ```bash
-  git config user.name "석인우"
-  git config user.email "tjrdlsdn@gmail.com"
-  ```
 - Vercel은 GitHub에 연결돼 있어 어느 컴퓨터에서 push하든 자동 배포됩니다
+- **작업 시작 전 항상 `git pull`** — 두 대를 번갈아 쓰면 충돌합니다
+
+### 이 저장소에 **없는** 파일 (따로 옮겨야 함)
+| 파일·폴더 | 내용 |
+|---|---|
+| `[회사 메일]/EMAIL.md` · `CLAUDE.md` · `명함-이메일-검토.md` | 회사 메일 운영 문서. 메일 작업은 이 폴더를 열고 별도 세션으로 진행 |
+| `[홈페이지 제작]/QR/` | 홈페이지 QR 4종 (명함·인쇄용). 없어지면 재생성 가능 — 아래 참고 |
+| `.claude/launch.json` | 미리보기 설정. 맥에서는 `npx serve .`로 대체 가능 |
+| 시공 사진 원본 `*.jpg.png` | `.gitignore` 처리됨. 사이트에는 변환된 jpg가 이미 있음 |
+
+구글 드라이브(회사 계정 inwoo@)에 올려두고 내려받는 방식을 권장.
+
+### QR 코드 재생성 방법
+`https://www.greenpro.co.kr/` 를 담은 QR (오류복원 H). 파이썬 `segno` + Pillow로 생성했고, 명함용은 아래에 `www.greenpro.co.kr` 글자(Pretendard Bold, #0049F0)를 붙인 형태.
+- 인쇄소에는 SVG(벡터) 전달 / 가로 2cm 이상 / 둘레 흰 여백 유지 / 무광 용지
+- 색 반전·어두운 배경 금지
 
 ## 11. 참고 문서
 
