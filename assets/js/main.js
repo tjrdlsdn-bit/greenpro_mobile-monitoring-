@@ -13,7 +13,10 @@ if('scrollRestoration' in history){ history.scrollRestoration = 'manual'; }
   if(footer) blocks.push(footer);
   if(blocks.length < 2) return;
 
-  var jumping = false;
+  // 이동 후 잠금. 맥 트랙패드는 손을 뗀 뒤에도 관성 휠 이벤트가 1초 넘게 이어지므로,
+  // 관성 이벤트(점점 작아짐)는 무시하고, 새로 쓸어 올리는 동작(값이 다시 커지거나 방향이 바뀜)만 다음 이동으로 받음
+  var LOCK_MS = 650;  // 섹션 이동 애니메이션 시간
+  var lockUntil = 0, jumpAt = 0, lastAbs = 0, lowAbs = Infinity, lastSign = 0;
 
   function headerH(){
     var hd = document.querySelector('header');
@@ -27,7 +30,21 @@ if('scrollRestoration' in history){ history.scrollRestoration = 'manual'; }
   }
 
   window.addEventListener('wheel', function(e){
-    if(jumping || e.ctrlKey || !e.deltaY) return; // ctrl+휠(확대/축소)은 그대로 둠
+    if(e.ctrlKey || !e.deltaY) return; // ctrl+휠(확대/축소)은 그대로 둠
+    var now = Date.now();
+    var abs = Math.abs(e.deltaY), sign = e.deltaY > 0 ? 1 : -1;
+    if(now < lockUntil){
+      var settled = now - jumpAt > LOCK_MS;
+      var fresh = settled && ((sign !== lastSign && abs >= 3) || (abs > lastAbs && abs - lowAbs >= 5));
+      if(!fresh){
+        if(settled) lowAbs = Math.min(lowAbs, abs);
+        lastAbs = abs;
+        e.preventDefault();
+        lockUntil = Math.max(lockUntil, now + 200); // 관성 이벤트가 멈추고 0.2초 지나면 잠금 해제
+        return;
+      }
+      lockUntil = 0; // 새로 쓸어 올린 동작 → 아래에서 평소처럼 처리
+    }
     var down = e.deltaY > 0;
     var y = window.scrollY;
     if(!down && y <= 2) return;
@@ -54,10 +71,10 @@ if('scrollRestoration' in history){ history.scrollRestoration = 'manual'; }
     if(target > maxY) target = maxY;
     if(Math.abs(target - y) < 2) return; // 더 이동할 곳이 없으면 기본 동작에 맡김
     e.preventDefault();
-    jumping = true;
+    jumpAt = now; lockUntil = now + LOCK_MS;
+    lastAbs = abs; lowAbs = Infinity; lastSign = sign;
     var reduce = window.matchMedia('(prefers-reduced-motion:reduce)').matches;
     window.scrollTo({top:target, behavior: reduce ? 'auto' : 'smooth'});
-    setTimeout(function(){ jumping = false; }, 650);
   }, {passive:false});
 })();
 
