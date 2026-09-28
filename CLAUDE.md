@@ -3,7 +3,7 @@
 이 파일은 Claude Code가 이 프로젝트를 이어받을 때 **가장 먼저 읽는 규칙서**입니다.
 사이트는 이미 완성되어 **Vercel에 배포 중**입니다. 처음부터 다시 만들지 말고, 기존 코드를 이어서 다듬으세요.
 
-> 최종 업데이트: 2026-09-22 (이후 작업은 **맥북**에서 진행)
+> 최종 업데이트: 2026-09-28 (맥북으로 이전 완료 — 홈페이지는 `Desktop/Claude/claude code/[홈페이지 작업]`)
 
 ---
 
@@ -24,7 +24,7 @@
 | 대표 주소 | **https://www.greenpro.co.kr** (2026-09-14 연결). greenpro.co.kr로 들어오면 www로 308 이동 |
 | DNS 관리 | **Vercel DNS** (네임서버 ns1/ns2.vercel-dns.com — 후이즈에서 변경). Vercel 대시보드 → Domains → greenpro.co.kr |
 | 도메인 등록 | 후이즈 (만료 2029-01-22). 옛 호스팅 지오디웹스는 만료됨 |
-| 회사 메일 | 구글 워크스페이스 (info@greenpro.co.kr). **별도 프로젝트로 분리** — 상세는 `Desktop/[회사 메일]/EMAIL.md` (GitHub에 없음) |
+| 회사 메일 | 구글 워크스페이스 (info@greenpro.co.kr). **별도 프로젝트로 분리** — 상세는 `Desktop/Claude/claude code/[회사 메일]/EMAIL.md` (GitHub에 없음) |
 | 커밋 작성자 | 석인우 / tjrdlsdn@gmail.com |
 
 **작업 후에는 반드시 commit + push** 해야 배포 주소에 반영됩니다.
@@ -77,7 +77,7 @@
 - 사업자등록번호: 791-81-00084
 - 개인정보 보호책임자: 석동호 이사 (시행일 2026-09-02)
 
-⚠️ 명함 제작 예정 (2026-09-22 논의). 명함에 넣을 이메일 주소는 **회사 메일 세션에서 결정 중** — `[회사 메일]/명함-이메일-검토.md`.
+⚠️ 명함 제작 예정 (2026-09-22 논의). 명함에 넣을 이메일 주소는 **회사 메일 세션에서 결정 중** — `Desktop/Claude/claude code/[회사 메일]/명함-이메일-검토.md`.
 **홈페이지 표기(푸터·contact·privacy의 `info@greenpro.co.kr`)를 바꾸기로 결정되면 6개 페이지를 모두 수정**할 것. 주소를 추가만 하는 경우 사이트는 손대지 않음.
 
 ---
@@ -168,7 +168,7 @@ ffmpeg -i 원본.png -q:v 3 assets/img/case-이름.jpg
 - `@` MX `smtp.google.com` / `@` TXT `google-site-verification=…` / `@` TXT `v=spf1 …` / `google._domainkey` TXT / `_dmarc` TXT
 - 특히 `google-site-verification` TXT는 **구글 서치 콘솔 소유 확인에도 쓰임** (inwoo@ 계정, 도메인 속성 greenpro.co.kr, 2026-09-15 자동 확인) — 지우면 서치 콘솔 권한도 끊김
 - 후이즈에서 네임서버를 바꾸면 홈페이지와 메일이 동시에 멈춥니다
-- 메일 관련 작업은 `Desktop/[회사 메일]/EMAIL.md` 기준으로 따로 진행
+- 메일 관련 작업은 `Desktop/Claude/claude code/[회사 메일]/EMAIL.md` 기준으로 따로 진행
 
 ### 인라인 style이 CSS를 덮어쓴다
 HTML에 `style="..."` 로 박힌 속성은 `style.css`의 규칙보다 우선합니다.
@@ -213,8 +213,8 @@ cd greenpro_mobile-monitoring- && git config user.name "석인우" && git config
 ### 이 저장소에 **없는** 파일 (따로 옮겨야 함)
 | 파일·폴더 | 내용 |
 |---|---|
-| `[회사 메일]/EMAIL.md` · `CLAUDE.md` · `명함-이메일-검토.md` | 회사 메일 운영 문서. 메일 작업은 이 폴더를 열고 별도 세션으로 진행 |
-| `[홈페이지 제작]/QR/` | 홈페이지 QR 4종 (명함·인쇄용). 없어지면 재생성 가능 — 아래 참고 |
+| `Desktop/Claude/claude code/[회사 메일]/` (EMAIL.md · CLAUDE.md · 명함-이메일-검토.md · 맥으로-옮기기.md) | 회사 메일 운영 문서. **맥으로 옮겨 둠 (2026-09-28)**. 메일 작업은 이 폴더를 열고 별도 세션으로 진행 |
+| QR 폴더 (윈도우의 `[홈페이지 제작]/QR/`) | 홈페이지 QR 4종 (명함·인쇄용). **맥에는 아직 없음** — 구글 드라이브에서 받거나 아래 방법으로 재생성 |
 | `.claude/launch.json` | 미리보기 설정. 맥에서는 `npx serve .`로 대체 가능 |
 | 시공 사진 원본 `*.jpg.png` | `.gitignore` 처리됨. 사이트에는 변환된 jpg가 이미 있음 |
 
