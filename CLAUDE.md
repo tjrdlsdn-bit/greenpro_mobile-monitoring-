@@ -150,7 +150,7 @@ ffmpeg -i 원본.png -q:v 3 assets/img/case-이름.jpg
    - 3순위 **캐치·사람인·잡코리아·크레딧잡** — 공시 자료로 자동 생성된 페이지를 기업회원으로 보완
    - 구글 지식 패널은 직접 생성 불가(생성 후 소유권 주장만 가능)
 5. (선택) 시공 사진 추가 확보 — 현재 3장. 대림제지·에어퍼스트 사진이 있으면 카드 확장 가능
-6. (선택) Google Analytics
+6. **[진행 중 2026-10-21] 방문자 분석 — Vercel Web Analytics** (GA 대신 선택: 쿠키 없음 → 개인정보처리방침 수정 불필요). 6개 페이지의 `main.js` 바로 아래에 `<script defer src="/_vercel/insights/script.js"></script>`. 결과 보기: Vercel 대시보드 → 프로젝트 → **Analytics** 탭. 페이지를 새로 만들면 이 줄도 넣을 것. 설치 전(~2026-10-21) 방문 기록은 없음
 7. **[진행 중] 네이버 노출** — 2026-09-15 확인: 네이버 "그린프로" 검색에 사이트 없음. 네이버에는 옛 사이트 주소(`/bbs/content.php?co_id=privacy`, 현재 403)만 남아 있었음
    - ~~서치어드바이저 사이트 등록·소유확인~~ **완료 (2026-09-15)** — 사용자 네이버 계정, `https://www.greenpro.co.kr`, HTML 태그 방식
    - ⚠️ `index.html` `<head>`의 `<meta name="naver-site-verification" ...>` **삭제 금지** (지우면 소유확인 풀림)
