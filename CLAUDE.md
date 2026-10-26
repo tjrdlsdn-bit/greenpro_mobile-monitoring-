@@ -206,12 +206,13 @@ python3 -m http.server 8000
 ## 10. 다른 컴퓨터에서 이어받기 (2026-09-22부터 맥북 사용)
 
 ```bash
-git clone https://github.com/tjrdlsdn-bit/greenpro_mobile-monitoring-.git
+git clone git@github.com:tjrdlsdn-bit/greenpro_mobile-monitoring-.git
 ```
 ```bash
 cd greenpro_mobile-monitoring- && git config user.name "석인우" && git config user.email "tjrdlsdn@gmail.com"
 ```
-- 첫 push 때 GitHub 로그인 창이 한 번 뜹니다
+- **push 인증은 SSH 키** (2026-10-27~, 만료 없음). 이 맥의 `~/.ssh/id_ed25519` 공개 키가 GitHub → Settings → SSH and GPG keys에 `macbook`으로 등록됨. 저장소 remote는 `git@github.com:tjrdlsdn-bit/greenpro_mobile-monitoring-.git`
+- 새 컴퓨터에서는 그 컴퓨터에서 SSH 키를 새로 만들어 GitHub에 등록하고 위 SSH 주소로 clone. (예전 방식인 HTTPS 토큰은 30일~1년마다 만료돼서 바꿈)
 - Vercel은 GitHub에 연결돼 있어 어느 컴퓨터에서 push하든 자동 배포됩니다
 - **작업 시작 전 항상 `git pull`** — 두 대를 번갈아 쓰면 충돌합니다
 
