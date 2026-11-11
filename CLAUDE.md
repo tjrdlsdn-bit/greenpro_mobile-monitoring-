@@ -60,6 +60,9 @@
 - **헤더·푸터·상단배너는 각 페이지에 인라인으로 중복**되어 있음 → 수정 시 **6개 파일 전부 동일하게 반영**할 것
 - 이미지: `assets/img/` / 아이콘: 루트 `favicon.ico`(16·32·48) + `assets/img/favicon-192.png` + `apple-touch-icon.png` / 검색·공유용: `assets/img/logo.png`(600 정사각 GREENPRO) · `og-image.png`(1200×630)
 - SEO: `sitemap.xml`, `robots.txt` (루트에 위치, greenpro.co.kr 기준으로 작성됨)
+- **비공개 링크 페이지 `3d/`** (2026-11-11~) — 고객사에 링크로만 보내는 태양광 예상 조감도 3D 뷰어. 현재 `3d/samyang.html` → https://www.greenpro.co.kr/3d/samyang (삼양화인테크놀로지 군산공장, 모델 포함 단일 파일 약 5MB, 원본은 `Desktop/Claude/claude cowork/[Sketch up]/삼양화인테크놀로지_웹배포/index.html`)
+  - **메뉴·sitemap·다른 페이지 링크에 넣지 말 것**. 색인 차단은 `<meta name="robots" content="noindex, nofollow, noarchive">` + `vercel.json`의 `/3d/(.*)` `X-Robots-Tag` 헤더 두 겹. `robots.txt`에 Disallow는 **넣지 않음** (막으면 검색엔진이 noindex를 못 읽고, 경로도 드러남)
+  - 새 고객 뷰어는 `3d/<이름>.html`로 추가하면 같은 규칙이 자동 적용됨. 원본 파일의 `noindex` 메타는 유지하고, `</body>` 앞에 Analytics 스크립트 한 줄 추가
 
 ### main.js 구성 (4개 블록)
 1. `history.scrollRestoration = 'manual'` — 새로고침 시 항상 첫 화면부터
