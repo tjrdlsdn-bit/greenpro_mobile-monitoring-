@@ -10,5 +10,11 @@
     },
     { "source": "/bbs/:path*", "destination": "/", "permanent": true },
     { "source": "/index.php", "destination": "/", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/3d/(.*)",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow, noarchive" }]
+    }
   ]
 }
